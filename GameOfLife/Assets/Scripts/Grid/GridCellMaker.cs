@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GridCellMaker : MonoBehaviour
+public class GridCellMaker : RandomizeGrid
 {
     [SerializeField]
     private CellData cellPrefab;
@@ -46,7 +46,7 @@ public class GridCellMaker : MonoBehaviour
         }
     }
 
-    public void RandomizeGrid()
+    public override void Randomize()
     {
         for (int y = 0; y < height; y++)
         {

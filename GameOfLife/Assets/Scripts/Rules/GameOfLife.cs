@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameOfLife : MonoBehaviour
+public class GameOfLife : PlayRules
 {
     [SerializeField]
     private float delayTurn = 0.3f;
@@ -47,7 +47,7 @@ public class GameOfLife : MonoBehaviour
             canPlay = false;
     }
 
-    public void Play()
+    public override void Play()
     {
         canPlay = !canPlay;
         InfoUI.Instance.SetStateGame(canPlay);

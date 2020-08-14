@@ -8,18 +8,25 @@ public class PlayerController : MonoBehaviour
     private Camera cam;
 
     [SerializeField]
-    private GridCellMaker grid;
+    private RandomizeGrid gridRandomize;
 
     [SerializeField]
-    private GameOfLife gameOfLife;
+    private PlayRules rulesPlay;
 
     [SerializeField]
     private float speed = 5f;
 
     void Start()
     {
-        float x = grid.WIDTH * grid.OFFSET * 0.5f - 0.5f;
-        float y = grid.HEIGHT * grid.OFFSET * 0.5f - 0.5f;
+
+        if(!(gridRandomize is GridCellMaker))
+        {
+            return;
+        }
+
+        GridCellMaker _grid = (GridCellMaker)gridRandomize;
+        float x = _grid.WIDTH * _grid.OFFSET * 0.5f - 0.5f;
+        float y = _grid.HEIGHT * _grid.OFFSET * 0.5f - 0.5f;
 
         transform.position = new Vector3(x, y, -10f);
     }
@@ -48,7 +55,7 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.P))
         {
-            gameOfLife.Play();
+            rulesPlay.Play();
         }
     }
 
@@ -56,7 +63,7 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.R))
         {
-            grid.RandomizeGrid();
+            gridRandomize.Randomize();
         }
     }
 

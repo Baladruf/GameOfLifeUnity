@@ -11,7 +11,8 @@ public class InfoUI : MonoBehaviour
 
     [SerializeField]
     private TextMeshProUGUI turnText;
-    private int nbTurn = 0;
+
+    public int nbTurn { get; private set; }
 
     [SerializeField]
     private TextMeshProUGUI stateGameText;
@@ -21,6 +22,7 @@ public class InfoUI : MonoBehaviour
     private void Awake()
     {
         Instance = this;
+        nbTurn = 0;
     }
 
     private void UpdateTurnText()
